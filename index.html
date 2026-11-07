@@ -67,8 +67,8 @@
     <input id="token" type="password" autocomplete="off"
            placeholder="Only needed if SMS_API_TOKEN is set on the server">
     <p class="small">
-      Your Africa's Talking username and API key now live in <code>.env.local</code>
-      on the server. They are never sent to this page.
+      Africa's Talking credentials live in <code>api/send-sms.js</code> on the server
+      and are never sent to this page.
     </p>
   </details>
 </main>
@@ -91,7 +91,6 @@
   }
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  // Turn the provider response into a short human-readable line.
   function describe(result) {
     const sms = result && result.data && result.data.SMSMessageData;
     if (sms && Array.isArray(sms.Recipients) && sms.Recipients.length) {

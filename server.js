@@ -6,10 +6,11 @@ const sendSms = require("./api/send-sms.js");
 const app = express();
 app.use(express.json());
 
-// Serve the page explicitly.
-// Do NOT use express.static(__dirname) — it would serve api/send-sms.js too.
-app.get(["/", "/my_sms_local_test.html"], (_req, res) => {
-  res.sendFile(path.join(__dirname, "my_sms_local_test.html"));
+// Serve index.html explicitly.
+// Do NOT use express.static(__dirname) — it would serve api/send-sms.js
+// and expose the hardcoded API key.
+app.get(["/", "/index.html"], (_req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.post("/api/send-sms", sendSms);
